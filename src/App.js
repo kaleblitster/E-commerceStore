@@ -11,6 +11,8 @@ import Products from './components/Products'
 import Details from './components/Details'
 import Cart from './components/Cart'
 import Login from './components/Login'
+import Logo from './generic.png'
+import './App.css'
 
 
 export default function App() {
@@ -19,6 +21,9 @@ export default function App() {
         <div>
           <nav>
             <ul>
+              <li>
+                <img src={Logo} id='websiteLogo' />
+              </li>
               <li>
                 <Link to="/Home">Home</Link>
               </li>
@@ -40,22 +45,11 @@ export default function App() {
             <Route path="/Home">
               <Home />
             </Route>
+            <Route render={()=> (<div>404 NOT FOUND</div>)} />
           </Switch>
         </div>
       </Router>
   );
 }
 
-// function Home() {
-//   return <h2>Home</h2>;
-// }
-//
-// function Products() {
-//   return <h2>Products</h2>;
-// }
-//
-// function Cart() {
-//   return <h2>Cart</h2>;
-// }
 
-// export default App;
