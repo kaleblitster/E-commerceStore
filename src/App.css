@@ -1,31 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Abhaya+Libre&display=swap');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap');
+
+body{
+    font-family: 'PT Sans', sans-serif;
+    background-color: #282FC3;
+}
+
 nav {
     width: 100%;
     padding: 0;
     list-style: none;
-    box-shadow: 0 0 7px rgba(0,0,0,0.6);
+    /*font-family: 'Abhaya Libre', serif;*/
+
 }
 
 img{
-    margin: 0;
     position: absolute;
-    top: 2%;
+    margin-top: -10.5%;
     left: 10%;
     float: left;
-    width: 15%;
-    height: 7%;
+    width: 25%;
+    height: 43%;
 
 }
 a{
     position: relative;
     right: -65%;
     padding: 16px;
+    padding-bottom: 2px;
     text-decoration: none;
     transition: all 0.1s;
-    color: black;
+    color: #FFFFFF;
+
 }
-a:hover{
-    color: #80A1D4;
+a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background: rgb(125,245,111);
+    background: linear-gradient(90deg, rgba(125,245,111,1) 0%, rgba(0,212,255,1) 100%);
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
 }
+a:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    background-color: #FFFFFF;
+}
+a:after{
+
+}
+/*a:hover{*/
+/*    text-decoration: underline;*/
+/*}*/
 
 li, link, img{
     display: inline;

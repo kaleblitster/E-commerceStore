@@ -1,55 +1,61 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 
-import Home from './components/Home'
-import Products from './components/Products'
-import Details from './components/Details'
-import Cart from './components/Cart'
-import Login from './components/Login'
-import Logo from './generic.png'
+import Path from './components/Router'
+
 import './App.css'
 
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoaded: false,
+      items: []
+    };
+  }
 
-export default function App() {
-  return (
-      <Router>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <img src={Logo} id='websiteLogo' />
-              </li>
-              <li>
-                <Link to="/Home">Home</Link>
-              </li>
-              <li>
-                <Link to="/Products">Products</Link>
-              </li>
-              <li>
-                <Link to="/Cart">Cart</Link>
-              </li>
-            </ul>
-          </nav>
-          <Switch>
-            <Route path="/Cart">
-              <Cart />
-            </Route>
-            <Route path="/Products">
-              <Products />
-            </Route>
-            <Route path="/Home">
-              <Home />
-            </Route>
-            <Route render={()=> (<div>404 NOT FOUND</div>)} />
-          </Switch>
-        </div>
-      </Router>
-  );
+
+  componentDidMount() {
+    fetch("https://my-json-server.typicode.com/tdmichaelis/json-api/products")
+        .then(res => res.json())
+        .then(
+            result => {
+              this.setState({
+                isLoaded: true,
+                items: result
+              });
+            },
+            (error) => {
+              this.setState({
+                isLoaded: true,
+                error
+              });
+            }
+        )
+  }
+
+  render() {
+    const { error, isLoaded, items } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+          <ul>
+            <li>
+              <Path/>
+            </li>
+            {items.map(item => (
+                <li key={item.id}>
+                  {item.title} {item.description}
+                  {item.img} {item.price}
+                  {item.rating} {item.category}
+                </li>
+            ))}
+          </ul>
+      );
+    }
+  }
 }
-
+export default App;
 
