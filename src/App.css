@@ -3,7 +3,7 @@
 
 body{
     font-family: 'PT Sans', sans-serif;
-    background-color: #282FC3;
+    background-color: #ffffff;
 }
 
 nav {
@@ -14,7 +14,7 @@ nav {
 
 }
 
-img{
+#websiteLogo{
     position: absolute;
     margin-top: -10.5%;
     left: 10%;
@@ -30,7 +30,7 @@ a{
     padding-bottom: 2px;
     text-decoration: none;
     transition: all 0.1s;
-    color: #FFFFFF;
+    color: #282FC3;
 
 }
 a:before {
@@ -69,6 +69,10 @@ nav, li, link {
     padding: 8px 20px;
     text-decoration: none;
     font-weight: bold;
+}
+.card {
+    width: 18rem;
+    border: 1px solid black;
 }
 
 
