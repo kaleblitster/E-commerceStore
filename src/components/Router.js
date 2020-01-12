@@ -9,10 +9,11 @@ import {
 
 import Home from './Home'
 import Products from './Products'
-import Details from './Details'
+// import Details from './Details'
 import Cart from './Cart'
-import Login from './Login'
+// import Login from './Login'
 import Logo from './generic.png'
+import Modal from "./Modal";
 
 export default function Path() {
    return (
@@ -26,9 +27,9 @@ export default function Path() {
                <li>
                  <Link to="/Home">Home</Link>
                </li>
-               <li>
-                 <Link to="/Products">Products</Link>
-               </li>
+               {/*<li>*/}
+               {/*  <Link to="/Products">Products</Link>*/}
+               {/*</li>*/}
                <li>
                  <Link to="/Cart">Cart</Link>
                </li>
@@ -39,7 +40,7 @@ export default function Path() {
                <Cart />
              </Route>
              <Route path="/Products">
-               <Products />
+               <Modal />
              </Route>
              <Route path="/Home">
                <Home />

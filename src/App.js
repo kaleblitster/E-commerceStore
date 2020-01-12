@@ -3,7 +3,7 @@ import './css/bootstrap.css'
 import Cards from './components/Cards'
 
 import Path from './components/Router'
-
+import Modal from "./components/Modal";
 import './App.css'
 
 class App extends React.Component {
@@ -11,6 +11,7 @@ class App extends React.Component {
         return(
             <div>
                 <Path/>
+
             </div>
         )
     }

@@ -71,6 +71,8 @@ nav, li, link {
     font-weight: bold;
 }
 .card {
+    display: flex;
+
     width: 18rem;
     border: 1px solid black;
 }

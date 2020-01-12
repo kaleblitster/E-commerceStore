@@ -2,6 +2,7 @@
 import React from 'react';
 import Path from "./Router";
 import Cards from "./Cards";
+import Filter from './Filter';
 
 class Home extends React.Component{
     constructor(props) {
@@ -31,6 +32,30 @@ class Home extends React.Component{
                 }
             )
     }
+    listProducts = () => {
+        this.setState(state => {
+            if (state.sort !== '') {
+                state.products.sort((a, b) =>
+                    (state.sort === 'lowestprice'
+                        ? ((a.price > b.price) ? 1 : -1)
+                        : ((a.price < b.price) ? 1 : -1)));
+            } else {
+                state.products.sort((a, b) => (a.id > b.id) ? 1 : -1);
+            }
+            if (state.size !== '') {
+                return { filteredProducts: state.products.filter(a => a.availableSizes.indexOf(state.size.toUpperCase()) >= 0) };
+            }
+            return { filteredProducts: state.products };
+        })
+    }
+    handleSortChange = (e) => {
+        this.setState({ sort: e.target.value });
+        this.listProducts();
+    }
+    handleSizeChange = (e) => {
+        this.setState({ size: e.target.value });
+        this.listProducts();
+    }
 
     render() {
         const { error, isLoaded, items } = this.state;
@@ -41,9 +66,8 @@ class Home extends React.Component{
         } else {
             return (
                 <ul>
-                    <div>
-                        Home Page
-                    </div>
+                    <Filter cat={this.state.category} handleChangeCategory={this.handleChangeCategory}
+                    />
                     {items.map(item => (
                         <Cards key={item.id}
                             img = {item.img}
